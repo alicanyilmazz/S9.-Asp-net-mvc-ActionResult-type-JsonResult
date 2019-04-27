@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "homepage";
+}
+
+<h2>homepage</h2>
+
+<div>
+    <input type="button" id="btnJsonResult_Id" value="Get Data" />
+</div>
+<script>
+
+    $(function () {
+
+        $("#btnJsonResult_Id").click(
+
+            function () {
+
+                $.ajax({
+
+                    type: "GET",
+                    url: "/Home/my_json_page",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) { //burada "data" isimli Json nesnesi döndükten sonra data.productID gibi . koyarak verilere erişebiliyorken XML de böyle dogrudan erişim şansınız yok extra javascript kodu yazmanız gerek.
+
+                        alert(data.product_ID); //property isimleri ile aynı olmalı.
+                        alert(data.product_name); //property isimleri ile aynı olmalı.
+                        alert(data.product_price); //property isimleri ile aynı olmalı.
+                        alert(data.product_explanation); //property isimleri ile aynı olmalı.
+
+                    }
+
+
+
+                });
+
+            });
+
+
+    });
+
+
+</script>
+
+
+@*
+       success: function (data)
+    {
+
+
+
+
+    }
+       metodu başarılı bir sekilde veri gelirse yapılacak islemleri yapabilmeniz için kullanılıyor.
+*@
